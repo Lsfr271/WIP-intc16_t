@@ -4,6 +4,8 @@ DOCUMENTATION OF ALL FUNCTIONS CURRENTLY IN intc.hpp
 You can spread this software anywhere you like, but you are not allowed to modify it currently.
 */
 
+/* (Operator overloading wont be explained here) */
+
 // INCLUDES: iostream & cstdint
 
 // the datatype is called intc16_t.
