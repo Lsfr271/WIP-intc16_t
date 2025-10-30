@@ -55,7 +55,7 @@ Next we have isbitset(). It turns the bit at the position argument. (sets it to 
 
 Next we have clearbit(). It turns off the bit at the position argument. (sets it to 0)
 
-Next we have togglebit(). It flipps the bit at the position argument. (if its 1 turns it to 0. Vice versa)
+Next we have togglebit(). It flips  the bit at the position argument. (if its 1 turns it to 0. Vice versa)
 
 Next we have countsetbits(). It counts how much 1's are in the number.
 
@@ -65,5 +65,5 @@ Next we have lowestbit(). It finds the position of the least significant 1 bit. 
 
 /---------------------------------------------------------------------------------------------------/
 
-These are the current functons available, expect this file to be changed as more functions are added.
+These are the current functions  available, expect this file to be changed as more functions are added.
 */
