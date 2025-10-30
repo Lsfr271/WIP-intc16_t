@@ -17,7 +17,7 @@ and its unsigned so no negative numbers allowed.
 If your wondering why its static constexpr instead of const because variables which use
 intc16_t gain static storage duration, meaning they exist for the lifetime of the program.
 
-The main value for now is valled val16. It can be changed manually or changed when enclosed in parantheses,
+The main value for now is called val16. It can be changed manually or changed when enclosed in parantheses,
 constructor exists as well.
 
 You can either do:
