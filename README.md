@@ -10,7 +10,7 @@
 but if you want, you can use it.
 
 ## How to get started if you are interested?
-1- Download [intc.hpp](https://github.com/Lsfr271/WIP-intc16_t/blob/main/src/intc.hpp). Or copy the file contents into a file in your workspace.
+1- Download [intc.hpp](https://github.com/Lsfr271/WIP-intc16_t/blob/main/src/intc.hpp). Or copy the file contents into a file in your workspace.\n
 2- Include it in a .cpp file. I cannot show you how because your workspace structure can be different.
 But heres how I include it.
 
