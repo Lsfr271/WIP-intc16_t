@@ -44,7 +44,7 @@ If not it returns false (0)
 Next we have toInt(). It returns the integer version of val16. Since val16 is an UNSIGNED int which cannot be negative, it can be returned as an INTEGER which can be
 negative.
 
-Next we have is checkIfMax(). It checks if val16 is 65535(MAXIMUM_SIZE16 in this case). If its 65535 it returns true (1). If not it returns false (0).
+Next we have checkIfMax(). It checks if val16 is 65535(MAXIMUM_SIZE16 in this case). If its 65535 it returns true (1). If not it returns false (0).
 
 Next we have arithmetic operations, i wont explain all of them but they clamp val16 if its higher than 65535. (sets val16 to 65535). And division does not allow
 the templated argument (which applies to all arithmetic operations) to be 0.
