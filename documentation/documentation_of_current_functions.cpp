@@ -1,7 +1,7 @@
 /*
 DOCUMENTATION OF ALL FUNCTIONS CURRENTLY IN intc.hpp
 
-You can spread this software anywhere you like, but you are not allowed to modify it currently.
+You can spread this software anywhere you like and you can modify it.
 */
 
 /* (Operator overloading wont be explained here) */
