@@ -37,7 +37,7 @@ Next we have getValue(). Pretty simple, it returns the value of val16 as an uint
 
 Next we have isZero(). It checks if val16 is 0. Returns true if val16 is 0. (1). Returns false is val16 is NOT 0. (0).
 
-Next we have isRange() which takes in two templated arguments, which means any number of any datatype is supported. It checks if val16
+Next we have inRange() which takes in two templated arguments, which means any number of any datatype is supported. It checks if val16
 is bigger than the first argument and lower than the second argument, thus its in range. If the statement is true, it returns true (1).
 If not it returns false (0)
 
