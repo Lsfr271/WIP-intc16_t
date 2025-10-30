@@ -7,7 +7,7 @@
 
 ## Why create intc16_t?
 - intc16_t was created to test my C++ skills. This is not expected to be used by anyone in coding
-- but if you want, you can use it.
+but if you want, you can use it.
 
 ## How to get started if you are interested?
 1- Download [intc.hpp](https://github.com/Lsfr271/WIP-intc16_t/blob/main/src/intc.hpp). Or copy the file contents into a file in your workspace.
