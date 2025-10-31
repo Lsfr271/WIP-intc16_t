@@ -6,7 +6,14 @@ You can spread this software anywhere you like and you can modify it.
 
 /* (Operator overloading wont be explained here) */
 
-// INCLUDES: iostream & cstdint
+/* includes:
+{
+iostream,
+cstdint,
+sstream,
+iomanip
+}
+*/
 
 // the datatype is called intc16_t.
 
@@ -62,6 +69,10 @@ Next we have countsetbits(). It counts how much 1's are in the number.
 Next we have highestbit(). It finds the position of the most significant 1 bit. (starting from 0)
 
 Next we have lowestbit(). It finds the position of the least significant 1 bit. (starting from 0)
+
+Next we have toBin(). It converts the current val16 of an object to a binary version. (its returned as a string)
+
+Next we have to toHex(). It converts the current val16 of an object to a hex version. (its returned as a string)
 
 /---------------------------------------------------------------------------------------------------/
 
