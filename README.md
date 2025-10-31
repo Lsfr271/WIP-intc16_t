@@ -12,7 +12,9 @@ but if you want, you can use it.
 ## How to get started if you are interested
 1- Download [intc16.hpp](https://github.com/Lsfr271/WIP-intc16_t/blob/main/src/intc16.hpp). Or copy the file contents into a file in your workspace.
 
-2- Include it in a .cpp file. (your workspace structure can be different.)
+2- Download [intc16_operator.hpp](https://github.com/Lsfr271/WIP-intc16_t/blob/main/src/intc16_operator.hpp). Or copy the file contents into a file in your workspace.
+
+3- Include ONLY the `intc16.hpp` file, do not include `intc16_operator.hpp` file. (your workspace structure can be different for the include path)
 ```cpp
 #include "../include/intc16.hpp"
 
