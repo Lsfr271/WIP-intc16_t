@@ -173,17 +173,13 @@ struct intc16_t {
             return -1;
         }
 
-        std::string toBin(intc16_t val = 0){
-            if (val == 0){
-                val = val16;
-            }
-
+        std::string toBin(){
             std::string binString = "";
 
             for (int i = 15; i >= 0; --i){
                 // iterate from (bit 15) to bit 0
                 // right shift and check the least significant bit
-                if ((val.val16 >> i) & 1){
+                if ((val16 >> i) & 1){
                     binString += '1';
                 }
                 else {
@@ -194,14 +190,10 @@ struct intc16_t {
             return binString;
         }
 
-        std::string toHex(intc16_t val = 0){
-            if (val == 0){
-                val = val16;
-            }
-
+        std::string toHex(){
             std::stringstream ss;
 
-            ss << std::hex << std::setw(4) << std::setfill('0') << val.val16;
+            ss << std::hex << std::setw(4) << std::setfill('0') << val16;
 
             return ss.str();
         }
