@@ -222,4 +222,27 @@ intc16_t operator&(const intc16_t& lhs, const intc16_t& rhs){
     return intc16_t(lhs.val16 & rhs.val16);
 }
 
+intc16_t operator~(const intc16_t& obj){
+    return intc16_t(~obj.val16);
+}
+
+bool operator!=(const intc16_t& lhs, const intc16_t& rhs){
+    return lhs.val16 != rhs.val16;
+}
+
+intc16_t& operator&=(intc16_t& lhs, const intc16_t& rhs){
+    lhs.val16 &= rhs.val16;
+
+    return lhs;
+}
+
+std::istream& operator>>(std::istream& is, intc16_t& obj){
+    unsigned int temp;
+
+    is >> temp; // read into temp uint
+    obj.val16 = temp; // assign to val16
+
+    return is;
+}
+
 #endif
