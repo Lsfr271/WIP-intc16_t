@@ -14,9 +14,12 @@ but if you want, you can use it.
 
 2- Download [intc16_operator.hpp](https://github.com/Lsfr271/WIP-intc16_t/blob/main/src/intc16_operator.hpp). Or copy the file contents into a file in your workspace.
 
-3- Include ONLY the `intc16.hpp` file, do not include `intc16_operator.hpp` file. (your workspace structure can be different for the include path)
+3- Download [intc16_functions.cpp](https://github.com/Lsfr271/WIP-intc16_t/blob/main/src/intc16_functions.cpp). Or copy the file contents into a file in your workspace.
+
+4- Include ONLY the `intc16.hpp` file, do not include `intc16_operator.hpp` or `intc16_functions.cpp` file. (your workspace structure can be different for the include path)
+
 ```cpp
-#include "../include/intc16.hpp"
+#include "../include/intc16/intc16.hpp"
 
 int main() {
   /* your code */
