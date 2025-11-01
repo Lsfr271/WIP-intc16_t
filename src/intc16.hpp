@@ -7,6 +7,8 @@
 #include <cstdint>
 #include <sstream>
 #include <iomanip>
+#include <fstream>
+
 
 struct intc16_t {
     private:
@@ -21,39 +23,31 @@ struct intc16_t {
         intc16_t(uint16_t u) : val16(u) {};
         intc16_t() {};
 
-        void showMemAddress(){
-            void* address = static_cast<void*>(&val16);
+        uint16_t getValue() const;
 
-            std::cout << "(16) Memory address: " << address << "\n";
-        }
 
-        uint16_t getValue() const {
-            return val16;
-        }
+        bool isZero() const;
+        bool checkIfMax() const;
+        bool isbitset(int pos);
 
-        bool isZero() const {
-            if (val16 == 0){
-                return true;
-            }
+        void showMemAddress();
+        void setbit(int pos);
+        void clearbit(int pos);
+        void togglebit(int pos);
 
-            return false;
-        }
+        int toInt();
+        int bitCount();
+        int countsetbits();
+        int highestbit();
+        int lowestbit();
 
+        std::string toBin();
+        std::string toHex();
+
+        /* TEMPLATE FUNCTIONS */
         template<class A>
         bool inRange(const A& v1, const A& v2) const {
             if ((val16 > v1) && (val16 < v2)){
-                return true;
-            }
-
-            return false;
-        }
-
-        int toInt(){
-            return static_cast<int>(val16);
-        }
-
-        bool checkIfMax() const {
-            if (val16 >= MAXIMUM_SIZE16){
                 return true;
             }
 
@@ -104,98 +98,6 @@ struct intc16_t {
             else {
                 val16 = val16 / other;
             }
-        }
-
-        int bitCount(){
-            int count = 0;
-            auto n = val16;
-
-            while (n > 0){
-                count++;
-                n >>= 1;
-            }
-
-            return count;
-        }
-
-        bool isbitset(int pos){
-            if ((val16 & (1 << pos)) != 0){
-                return true;
-            }
-
-            return false;
-        }
-
-
-        void setbit(int pos){
-            val16 |= (1 << pos);
-        }
-
-        void clearbit(int pos){
-            val16 &= ~(1 << pos);
-        }
-
-        void togglebit(int pos){
-            val16 ^= (1 << pos);
-        }
-
-        int countsetbits(){
-            int count = 0;
-            int n = val16;
-
-            while (n){
-                count += n & 1;
-                n >>= 1;
-            }
-
-            return count;
-        }
-
-        int highestbit(){
-            int pos = -1;
-            int n = val16;
-
-            while (n){
-                n >>= 1;
-                pos++;
-            }
-
-            return pos;
-        }
-
-        int lowestbit(){
-            for (int i = 0; i < 16; i++){
-                if (val16 & (1 << i)){
-                    return i;
-                }
-            }
-
-            return -1;
-        }
-
-        std::string toBin(){
-            std::string binString = "";
-
-            for (int i = 15; i >= 0; --i){
-                // iterate from (bit 15) to bit 0
-                // right shift and check the least significant bit
-                if ((val16 >> i) & 1){
-                    binString += '1';
-                }
-                else {
-                    binString += '0';
-                }
-            }
-
-            return binString;
-        }
-
-        std::string toHex(){
-            std::stringstream ss;
-
-            ss << std::hex << std::setw(4) << std::setfill('0') << val16;
-
-            return ss.str();
         }
 };
 
