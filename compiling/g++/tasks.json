@@ -1,0 +1,33 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build and Run Active File",
+      "type": "shell",
+      "command": "g++",
+      "args": [
+         "C:/YourPath/... <this must be the path to your main.cpp program that includes the intc16.hpp>", 
+         "C:/YourPath/... <this must be the path that includes intc16_functions.hpp>",
+         "-I", "C:/YourPath/... <this should be your MAIN directory for the compiler to find the headers>",
+         "-o", "C/YourPath/... <this should be the .exe that your main.cpp program that includes the intc16.hpp will be compiled in. (must create folder manually)>"
+        ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": ["$gcc"],
+      "detail": "Compile active file to .exe"
+    },
+    {
+      "label": "Run Executable",
+      "type": "shell",
+      "dependsOn": "Build and Run Active File",
+      "command": "powershell",
+      "args": [
+        "-Command",
+        "Start-Process -NoNewWindow -Wait '${fileDirname}\\${fileBasenameNoExtension}.exe'"
+      ],
+      "group": "build"
+    }
+  ]
+}
