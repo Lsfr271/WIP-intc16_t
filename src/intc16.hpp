@@ -26,11 +26,15 @@ struct intc16_t {
         uint16_t getValue() const;
         uint16_t getValueFromFile(const std::string& filename,
         size_t position) const;
+        uint16_t getValueFromBinFile(const std::string& filename, size_t pos) const;
+        uint16_t getValueFromHexFile(const std::string& filename, size_t pos) const;
 
 
         bool isZero() const;
         bool checkIfMax() const;
         bool isbitset(int pos) const;
+        bool evenParity() const;
+        bool isMin() const;
 
         void showMemAddress();
         void setbit(int pos);
@@ -38,17 +42,26 @@ struct intc16_t {
         void togglebit(int pos);
         void appToFile(const std::string& filename) const;
         void overwriteFile(const std::string& filename) const;
+        void swap(intc16_t& other);
+        void appToBinFile(const std::string& filename) const;
+        void appToHexFile(const std::string& filename) const;
 
         size_t countRecords(const std::string& filename) const;
 
         int toInt();
         int bitCount() const;
-        int countsetbits();
+        int countsetbits() const;
         int highestbit() const;
         int lowestbit() const;
+        int leadingZero() const;
+        int trailingZero() const;
 
         std::string toBin();
         std::string toHex();
+
+        intc16_t rotateLeft(int n) const;
+        intc16_t rotateRight(int n) const;
+        intc16_t reverseBits() const;
 
 
 
