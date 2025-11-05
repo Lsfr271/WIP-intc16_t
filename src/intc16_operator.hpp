@@ -170,4 +170,66 @@ intc16_t operator-(const intc16_t& obj){
     return intc16_t(-static_cast<int>(obj.val16)); // returns signed negation
 }
 
+intc16_t operator%(const intc16_t& lhs, const intc16_t& rhs){
+    if (rhs.val16 == 0){
+        throw std::invalid_argument("Mod by 0.");
+    }
+
+    return intc16_t(lhs.val16 % rhs.val16);
+}
+
+intc16_t& operator%=(intc16_t& lhs, const intc16_t& rhs){
+    if (rhs.val16 == 0){
+        throw std::invalid_argument("Mod by 0.");
+    }
+
+    lhs.val16 %= rhs.val16;
+
+    return lhs;
+}
+
+bool operator>=(const intc16_t& lhs, const intc16_t& rhs){
+    return lhs.val16 >= rhs.val16;
+}
+
+bool operator<=(const intc16_t& lhs, const intc16_t& rhs){
+    return lhs.val16 <= rhs.val16;
+}
+
+intc16_t& operator++(intc16_t& obj){
+    if (obj.val16 < 65535){
+        ++obj.val16;
+    }
+
+    return obj;
+}
+
+intc16_t operator++(intc16_t& obj, int){
+    intc16_t tmp = obj;
+
+    if (obj.val16 < 65535){
+        ++obj.val16;
+    }
+
+    return tmp;
+}
+
+intc16_t& operator--(intc16_t& obj){
+    if (obj.val16 > 0){
+        --obj.val16;
+    }
+
+    return obj;
+}
+
+intc16_t operator--(intc16_t& obj, int){
+    intc16_t tmp = obj;
+
+    if (obj.val16 > 0){
+        --obj.val16;
+    }
+
+    return tmp;
+}
+
 #endif
