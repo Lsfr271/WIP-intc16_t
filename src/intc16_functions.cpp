@@ -122,3 +122,36 @@ std::string intc16_t::toHex(){
 
     return ss.str();
 }
+
+void intc16_t::appToFile(const std::string& filename) const {
+    std::ofstream file(filename, std::ios::app);
+
+    if (!file){
+        throw std::runtime_error("Failed to open file.");
+    }
+
+    file << val16 << "\n"; // each val16 stored in a new line
+}
+
+uint16_t intc16_t::getValueFromFile(const std::string& filename,
+size_t position) const {
+    std::ifstream file(filename);
+
+    if (!file){
+        throw std::runtime_error("Failed to open file.");
+    }
+
+    uint16_t value;
+    size_t lNum = 0;
+
+    while (file >> value){
+        // check if the line number is equal to position
+        if (lNum == position){
+            return value;
+        }
+
+        lNum++;
+    }
+
+    throw std::out_of_range("Position exceeds records in file.");
+}
