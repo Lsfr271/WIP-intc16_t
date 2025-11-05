@@ -1,4 +1,3 @@
-/* WORKSPACE PATH (IT CAN BE DIFFERENT FOR YOU) */
 #include "../include/intc16/intc16.hpp"
 
 int main() {
@@ -61,4 +60,15 @@ int main() {
     std::cout << a.inRange(60, 200) << "\n";
     std::cout << a.inRange(20, 500) << "\n";
     std::cout << a.inRange(60, 120) << "\n";
+
+    size_t lines = a.countRecords("test/records.txt");
+
+    std::cout << lines;
+
+    a.val16 = 500;
+    a.overwriteFile("test/records.txt");
+
+    size_t line2 = a.countRecords("test/records.txt");
+
+    std::cout << line2;
 }
