@@ -30,20 +30,22 @@ struct intc16_t {
 
         bool isZero() const;
         bool checkIfMax() const;
-        bool isbitset(int pos);
+        bool isbitset(int pos) const;
 
         void showMemAddress();
         void setbit(int pos);
         void clearbit(int pos);
         void togglebit(int pos);
         void appToFile(const std::string& filename) const;
+        void overwriteFile(const std::string& filename) const;
 
+        size_t countRecords(const std::string& filename) const;
 
         int toInt();
-        int bitCount();
+        int bitCount() const;
         int countsetbits();
-        int highestbit();
-        int lowestbit();
+        int highestbit() const;
+        int lowestbit() const;
 
         std::string toBin();
         std::string toHex();
