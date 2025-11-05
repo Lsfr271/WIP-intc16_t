@@ -11,7 +11,8 @@ You can spread this software anywhere you like and you can modify it.
 iostream,
 cstdint,
 sstream,
-iomanip
+iomanip,
+fstream
 }
 */
 
@@ -72,7 +73,11 @@ Next we have lowestbit(). It finds the position of the least significant 1 bit. 
 
 Next we have toBin(). It converts the current val16 of an object to a binary version. (its returned as a string)
 
-Next we have to toHex(). It converts the current val16 of an object to a hex version. (its returned as a string)
+Next we have toHex(). It converts the current val16 of an object to a hex version. (its returned as a string)
+
+Next we have appToFile(). It appends the value of val16 to a file. (writes)
+
+Next we have getValueFromFile(). It reads the records of val16, each new line is a position. (position goes higher = higher position number (newline))
 
 /---------------------------------------------------------------------------------------------------/
 
