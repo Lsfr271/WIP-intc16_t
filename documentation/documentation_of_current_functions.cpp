@@ -79,6 +79,35 @@ Next we have appToFile(). It appends the value of val16 to a file. (writes)
 
 Next we have getValueFromFile(). It reads the records of val16, each new line is a position. (position goes higher = higher position number (newline))
 
+Next we have overwriteFile(): Overwrites the content of a file with the current val16. 
+
+Next we have countRecords(): Counts the number of records (lines) in a text file where each line is a separate val16. 
+Returns the number of lines. Throws runtime_error if the file cannot be opened.
+
+Next we have rotateLeft(): Rotates the bits of val16 to the left by n positions.
+
+Next we have rotateRight(): Rotates the bits of val16 to the right by n positions.
+
+Next we have reverseBits(): Reverses all bits of val16. 
+
+Next we have evenParity(): Checks if the number of set bits (1s) in val16 is even.
+
+Next we have swap(): Swaps the val16 values between the current object and the other object.
+
+Next we have isMin(): Checks if val16 is 0. Returns true (1) if val16 is 0, false (0) otherwise.
+
+Next we have leadingZero(): Counts the number of leading zeros in the 16-bit val16.
+
+Next we have trailingZero(): Counts the number of trailing zeros in the 16-bit val16.
+
+Next we have appToBinFile(): Appends the val16 value to a binary file. 
+
+Next we have getValueFromBinFile(): Reads the val16 stored in a binary file at the given position.
+
+Next we have appToHexFile(): Appends the current val16 as a 4 digit uppercase hexadecimal number to a file.
+
+Next we have getValueFromHexFile(): Reads a val16 from a hex file at the given position. 
+
 /---------------------------------------------------------------------------------------------------/
 
 These are the current functions  available, expect this file to be changed as more functions are added.
