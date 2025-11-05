@@ -7,7 +7,7 @@
 #include <cstdint>
 #include <sstream>
 #include <iomanip>
-#include <fstream> /* this will be used later in future functions */
+#include <fstream>
 
 
 struct intc16_t {
@@ -24,6 +24,8 @@ struct intc16_t {
         intc16_t() {};
 
         uint16_t getValue() const;
+        uint16_t getValueFromFile(const std::string& filename,
+        size_t position) const;
 
 
         bool isZero() const;
@@ -34,6 +36,8 @@ struct intc16_t {
         void setbit(int pos);
         void clearbit(int pos);
         void togglebit(int pos);
+        void appToFile(const std::string& filename) const;
+
 
         int toInt();
         int bitCount();
@@ -43,6 +47,8 @@ struct intc16_t {
 
         std::string toBin();
         std::string toHex();
+
+
 
         /* TEMPLATE FUNCTIONS */
         template<class A>
