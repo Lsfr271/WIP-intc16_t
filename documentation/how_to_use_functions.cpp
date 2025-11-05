@@ -71,4 +71,39 @@ int main() {
     size_t line2 = a.countRecords("test/records.txt");
 
     std::cout << line2;
+
+    std::cout << a.evenParity() << "\n";
+    std::cout << b.isMin() << "\n";
+
+    intc16_t c = a.rotateLeft(3);
+    intc16_t d = a.rotateRight(3);
+
+    std::cout << c.toBin() << "\n";
+    std::cout << d.toBin() << "\n";
+
+    intc16_t e = a.reverseBits();
+
+    std::cout << e.toBin() << "\n";
+    std::cout << a.leadingZero() << "\n";
+    std::cout << a.trailingZero() << "\n";
+
+    std::cout << "before swap: a=" << a.getValue() << ", b=" << b.getValue() << "\n";
+    a.swap(b);
+    std::cout << "after swap: a=" << a.getValue() << ", b=" << b.getValue() << "\n";
+
+    a.appToBinFile("test/data.bin");
+    b.appToBinFile("test/data.bin");
+
+    uint16_t binVal0 = a.getValueFromBinFile("test/data.bin", 0);
+    uint16_t binVal1 = b.getValueFromBinFile("test/data.bin", 1);
+
+    std::cout << "bin file pos0: " << binVal0 << ", pos1: " << binVal1 << "\n";
+
+    a.appToHexFile("test/data.hex");
+    b.appToHexFile("test/data.hex");
+
+    uint16_t hexVal0 = a.getValueFromHexFile("test/data.hex", 0);
+    uint16_t hexVal1 = b.getValueFromHexFile("test/data.hex", 1);
+
+    std::cout << "hex file pos0: " << hexVal0 << ", pos1: " << hexVal1 << "\n";
 }
