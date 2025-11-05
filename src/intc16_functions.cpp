@@ -30,7 +30,7 @@ bool intc16_t::checkIfMax() const {
     return false;
 }
 
-int intc16_t::bitCount(){
+int intc16_t::bitCount() const{
     int count = 0;
     auto n = val16;
 
@@ -42,7 +42,7 @@ int intc16_t::bitCount(){
     return count;
 }
 
-bool intc16_t::isbitset(int pos){
+bool intc16_t::isbitset(int pos) const{
     if ((val16 & (1 << pos)) != 0){
         return true;
     }
@@ -75,7 +75,7 @@ int intc16_t::countsetbits(){
     return count;
 }
 
-int intc16_t::highestbit(){
+int intc16_t::highestbit() const{
     int pos = -1;
     int n = val16;
 
@@ -87,7 +87,7 @@ int intc16_t::highestbit(){
     return pos;
 }
 
-int intc16_t::lowestbit(){
+int intc16_t::lowestbit() const{
     for (int i = 0; i < 16; i++){
         if (val16 & (1 << i)){
             return i;
@@ -154,4 +154,31 @@ size_t position) const {
     }
 
     throw std::out_of_range("Position exceeds records in file.");
+}
+
+void intc16_t::overwriteFile(const std::string& filename) const {
+    std::ofstream file(filename, std::ios::trunc);
+
+    if (!file){
+        throw std::runtime_error("Failed to open file.");
+    }
+
+    file << val16 << "\n";
+}
+
+size_t intc16_t::countRecords(const std::string& filename) const {
+    std::ifstream file(filename);
+
+    if (!file){
+        throw std::runtime_error("Failed to open file.");
+    }
+
+    size_t count = 0;
+    uint16_t temp;
+
+    while (file >> temp){
+        ++count;
+    }
+
+    return count;
 }
