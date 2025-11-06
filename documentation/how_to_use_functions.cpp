@@ -106,4 +106,13 @@ int main() {
     uint16_t hexVal1 = b.getValueFromHexFile("test/data.hex", 1);
 
     std::cout << "hex file pos0: " << hexVal0 << ", pos1: " << hexVal1 << "\n";
+
+    intc16_t** arr = new intc16_t*[10];
+
+    for (int i = 0; i < 10; ++i){
+        arr[i] = new intc16_t(i);
+    }
+
+    intc16_t obj;
+    obj.a_delptr(arr, 10);
 }
