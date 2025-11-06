@@ -317,3 +317,24 @@ uint16_t intc16_t::getValueFromHexFile(const std::string& filename, size_t pos) 
 
     throw std::out_of_range("Position exceeds number of records.");
 }
+
+void intc16_t::delptr(intc16_t* other) const {
+    if (other){
+        delete other;
+        other = nullptr;
+    }
+}
+
+void intc16_t::a_delptr(intc16_t* other[], size_t count) const {
+    if (!other) {
+        return;
+    }
+
+    for (size_t i = 0; i < count; ++i){
+        delete other[i];
+        other[i] = nullptr;
+    }
+
+    delete[] other;
+    other = nullptr;
+}
