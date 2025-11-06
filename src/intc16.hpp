@@ -45,6 +45,8 @@ struct intc16_t {
         void swap(intc16_t& other);
         void appToBinFile(const std::string& filename) const;
         void appToHexFile(const std::string& filename) const;
+        void delptr(intc16_t* other) const;
+        void a_delptr(intc16_t* other[], size_t count) const;
 
         size_t countRecords(const std::string& filename) const;
 
