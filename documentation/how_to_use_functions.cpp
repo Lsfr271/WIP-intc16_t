@@ -43,7 +43,7 @@ int main() {
         uint16_t val0 = a.getValueFromFile("test/records.txt", 0);
         std::cout << "pos 0: " << val0;
     }
-    
+
     if (txtLines > 1) {
         uint16_t val1 = b.getValueFromFile("test/records.txt", 1);
         std::cout << ", pos 1: " << val1 << "\n";
@@ -147,4 +147,17 @@ int main() {
     std::cout << result.val16 << "\n";
 
     std::cout << a.i_sqrt(10) << "\n";
+
+    std::cout << a.countUnsetBits() << "\n";
+    std::cout << b.isPowerOfTwo() << "\n";
+    std::cout << a.isPrime() << "\n";
+    a.n_powerOfTwo();
+
+    std::cout << b.m_highestBit() << "\n";
+
+    a.swapBits(3, 4);
+    b.swapBits(9, 10);
+
+    std::cout << a.toBin() << "\n";
+    std::cout << b.toBin() << "\n";
 }
