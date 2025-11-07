@@ -338,3 +338,112 @@ void intc16_t::a_delptr(intc16_t* other[], size_t count) const {
     delete[] other;
     other = nullptr;
 }
+
+intc16_t intc16_t::pow(intc16_t base, unsigned int exp) {
+    uint32_t result = 1;
+    uint32_t b = base.val16;
+
+    while (exp > 0){
+        if (exp & 1){
+            result *= b;
+        }
+
+        b *= b;
+        exp >>= 1;
+
+        if (result > 65535){
+            result = 65535;
+        }
+    }
+
+    return intc16_t(result);
+}
+
+bool intc16_t::equals(const intc16_t& other) const {
+    if (other.val16 == val16){
+        return true;
+    }
+
+    return false;
+}
+
+bool intc16_t::m_equals(const intc16_t& other, const intc16_t& other2, char op) const {
+    uint32_t a = other.val16;
+    uint32_t b = other2.val16;
+
+    switch (op) {
+        case '+':
+            if (a + b > 65535){
+                throw std::invalid_argument("The 2 values exceed 65535.");
+            }
+
+            return (a + b) == val16;
+
+        case '-':
+            if (a < b){
+                throw std::invalid_argument("The 2 values go into the negatives.");
+            }
+
+            return (a - b) == val16;
+
+        case '*':
+            if (a * b > 65535){
+                throw std::invalid_argument("The 2 values exceed 65535.");
+            }
+
+            return (a * b) == val16;
+
+        case '/':
+            if (b == 0){
+                throw std::invalid_argument("Division by 0 not allowed.");
+            }
+
+            return (a / b) == val16;
+
+        default:
+            throw std::invalid_argument("Please pick a valid operation. (+, -, *, /).");
+    }
+}
+
+bool intc16_t::isOdd() const {
+    return (val16 % 2 != 0);
+}
+
+bool intc16_t::isEven() const {
+    return (val16 % 2 == 0);
+}
+
+bool intc16_t::isPalindromeH() const {
+    std::stringstream ss;
+
+    ss << std::hex << std::uppercase << val16;
+
+    std::string hStr = ss.str();
+    std::string rev = std::string(hStr.rbegin(), hStr.rend());
+
+    return (hStr == rev);
+}
+
+bool intc16_t::isPalindromeB() const {
+    std::string bStr;
+
+    for (int i = 15; i >= 0; --i){
+        bStr.push_back((val16 & (1 << i)) ? '1' : '0');
+    }
+
+    // remove leading zeros
+    size_t f1 = bStr.find('1');
+
+    if (f1 != std::string::npos){
+        bStr = bStr.substr(f1);
+    }
+
+    std::string rev = std::string(bStr.rbegin(), bStr.rend());
+
+    return (bStr == rev);
+}
+
+bool intc16_t::hasBitPatttern(uint16_t pattern) const {
+    return ((val16 & pattern) == pattern);
+}
+
