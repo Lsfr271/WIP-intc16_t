@@ -135,9 +135,9 @@ Next we have gcd(). Returns the greatest common divider of anything.
 
 Next we have lcm(). Returns the lowest common multiple of anything.
 
-Next we have (integral) sqrt(). Returns the square root of an integral type.
+Next we have i_sqrt(). Returns the square root of an integral type.
 
-Next we have (floating point) sqrt(). Returns the square root of a floating point type.
+Next we have f_sqrt(). Returns the square root of a floating point type.
 
 /---------------------------------------------------------------------------------------------------/
 
