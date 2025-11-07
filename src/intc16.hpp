@@ -8,7 +8,8 @@
 #include <sstream>
 #include <iomanip>
 #include <fstream>
-
+#include <cmath>
+#include <type_traits>
 
 struct intc16_t {
     private:
@@ -35,6 +36,13 @@ struct intc16_t {
         bool isbitset(int pos) const;
         bool evenParity() const;
         bool isMin() const;
+        bool equals(const intc16_t& other) const;
+        bool m_equals(const intc16_t& other, const intc16_t& other2, char op) const;
+        bool isOdd() const;
+        bool isEven() const;
+        bool isPalindromeH() const;
+        bool isPalindromeB() const;
+        bool hasBitPatttern(uint16_t pattern) const;
 
         void showMemAddress();
         void setbit(int pos);
@@ -64,8 +72,7 @@ struct intc16_t {
         intc16_t rotateLeft(int n) const;
         intc16_t rotateRight(int n) const;
         intc16_t reverseBits() const;
-
-
+        intc16_t pow(intc16_t base, unsigned int exp);
 
         /* TEMPLATE FUNCTIONS */
         template<class A>
@@ -120,6 +127,122 @@ struct intc16_t {
             }
             else {
                 val16 = val16 / other;
+            }
+        }
+
+        template<class S>
+        S abs(S val){
+            if (val < 0){
+                return val;
+            }
+            else {
+                return val;
+            }
+        }
+
+        template<class S>
+        S pow(S base, unsigned int exp){
+            S result = 1;
+
+            while (exp > 0){
+                if (exp & 1){
+                    result *= base;
+                }
+
+                base *= base;
+                exp >>= 1;
+            }
+
+            return result;
+        }
+
+        template<class S>
+        S gcd(S a, S b){
+            while (b != 0){
+                S temp = b;
+                b = a % b;
+                a = temp;
+            }
+
+            return a;
+        }
+
+        template<class S>
+        S lcm(S a, S b){
+            if (a == 0 || b == 0){
+                return 0;
+            }
+
+            return (static_cast<S>(a) * b) / gcd(a, b);
+        }
+
+        template<class S, class = std::enable_if_t<std::is_integral<S>::value>>
+        S sqrt(S num){
+            // signed neg
+            if constexpr(std::is_signed<S>::value){
+                if (num < 0){
+                    return static_cast<S>(-1);
+                }
+            }
+
+            using unsigned_t = std::make_unsigned_t<S>;
+            unsigned_t n = static_cast<unsigned_t>(num);
+            unsigned_t lo = 0;
+            unsigned_t hi = (n >= 1) ? std::min<unsigned_t>(n, static_cast<unsigned_t>(
+                65535
+            )) : 0; // safe bound
+            unsigned_t ans = 0;
+
+            while (lo <= hi){
+                unsigned_t mid = (lo + hi) / 2;
+                unsigned long long sq = static_cast<unsigned long long>(mid) * mid;
+
+                if (sq == n){
+                    ans = mid;
+
+                    break;
+                }
+                else if (sq < n){
+                    ans = mid;
+                    lo = mid + 1;
+                }
+                else {
+                    if (mid == 0){
+                        break;
+                    }
+
+                    hi = mid - 1;
+                }
+            }
+
+            return static_cast<S>(ans);
+        }
+
+        template<class S, class = std::enable_if_t<std::is_floating_point<S>::value>>
+        S sqrt(S num){
+            if (std::isnan(num)){
+                return std::numeric_limits<S>::quiet_NaN();
+            }
+
+            if (num < 0){
+                return static_cast<S>(-1);
+            }
+
+            if (num == 0){
+                return static_cast<S>(0);
+            }
+
+            double guess = static_cast<double>(num) / 2.0;
+            double eps = 1e-9;
+
+            while (true){
+                double new_guess = 0.5 * (guess + static_cast<double>(num) / guess);
+
+                if (std::fabs(new_guess - guess) < eps){
+                    return static_cast<S>(new_guess);
+                }
+
+                guess = new_guess;
             }
         }
 };
