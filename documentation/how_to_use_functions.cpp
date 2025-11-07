@@ -1,9 +1,8 @@
 #include "../include/intc16/intc16.hpp"
 
 int main() {
-    // create the objects
     intc16_t a(100);
-    intc16_t b;
+    intc16_t b(23);
 
     std::cout << a.getValue() << "\n";
     std::cout << a.toInt() << "\n";
@@ -18,17 +17,15 @@ int main() {
 
     std::cout << a.isbitset(0) << "\n";
 
-    b.setbit(0); // sets LSB
-    b.setbit(3); // sets 4th bit
+    b.setbit(0);
+    b.setbit(3);
 
     std::cout << "b after setbit: " << b.toBin() << "\n";
 
-    b.clearbit(0); // clears LSB
-
+    b.clearbit(0);
     std::cout << "b after clearbit: " << b.toBin() << "\n";
 
     b.togglebit(3);
-
     std::cout << "b after togglebit: " << b.toBin() << "\n";
 
     std::cout << a.toBin() << "\n";
@@ -37,19 +34,26 @@ int main() {
     a.showMemAddress();
     b.showMemAddress();
 
-    a.appToFile("test/records.txt"); // appends 100
-    b.appToFile("test/records.txt"); // appends 0
+    a.appToFile("test/records.txt");
+    b.appToFile("test/records.txt");
 
-    uint16_t val0 = a.getValueFromFile("test/records.txt", 0);
-    uint16_t val1 = b.getValueFromFile("test/records.txt", 1);
+    size_t txtLines = a.countRecords("test/records.txt");
 
-    std::cout << "pos 0: " << val0 << ", pos 1: " << val1 << "\n";
+    if (txtLines > 0) {
+        uint16_t val0 = a.getValueFromFile("test/records.txt", 0);
+        std::cout << "pos 0: " << val0;
+    }
+    
+    if (txtLines > 1) {
+        uint16_t val1 = b.getValueFromFile("test/records.txt", 1);
+        std::cout << ", pos 1: " << val1 << "\n";
+    }
 
     a.add(50);
     std::cout << "a+50: " << a.getValue() << "\n";
 
     a.subtract(20);
-    std::cout << "a-50: " << a.getValue() << "\n";
+    std::cout << "a-20: " << a.getValue() << "\n";
 
     a.multiply(2);
     std::cout << "a*2: " << a.getValue() << "\n";
@@ -61,15 +65,11 @@ int main() {
     std::cout << a.inRange(20, 500) << "\n";
     std::cout << a.inRange(60, 120) << "\n";
 
-    size_t lines = a.countRecords("test/records.txt");
-
-    std::cout << lines;
+    std::cout << txtLines;
 
     a.val16 = 500;
-    a.overwriteFile("test/records.txt");
 
     size_t line2 = a.countRecords("test/records.txt");
-
     std::cout << line2;
 
     std::cout << a.evenParity() << "\n";
@@ -82,7 +82,6 @@ int main() {
     std::cout << d.toBin() << "\n";
 
     intc16_t e = a.reverseBits();
-
     std::cout << e.toBin() << "\n";
     std::cout << a.leadingZero() << "\n";
     std::cout << a.trailingZero() << "\n";
@@ -94,27 +93,41 @@ int main() {
     a.appToBinFile("test/data.bin");
     b.appToBinFile("test/data.bin");
 
-    uint16_t binVal0 = a.getValueFromBinFile("test/data.bin", 0);
-    uint16_t binVal1 = b.getValueFromBinFile("test/data.bin", 1);
+    size_t binLines = a.countRecords("test/data.bin");
 
-    std::cout << "bin file pos0: " << binVal0 << ", pos1: " << binVal1 << "\n";
+    if (binLines > 0) {
+        uint16_t binVal0 = a.getValueFromBinFile("test/data.bin", 0);
+        std::cout << "bin file pos0: " << binVal0;
+    }
+
+    if (binLines > 1) {
+        uint16_t binVal1 = b.getValueFromBinFile("test/data.bin", 1);
+        std::cout << ", pos1: " << binVal1 << "\n";
+    }
 
     a.appToHexFile("test/data.hex");
     b.appToHexFile("test/data.hex");
 
-    uint16_t hexVal0 = a.getValueFromHexFile("test/data.hex", 0);
-    uint16_t hexVal1 = b.getValueFromHexFile("test/data.hex", 0);
+    size_t hexLines = a.countRecords("test/data.hex");
 
-    std::cout << "hex file pos0: " << hexVal0 << ", pos1: " << hexVal1 << "\n";
+    if (hexLines > 0) {
+        uint16_t hexVal0 = a.getValueFromHexFile("test/data.hex", 0);
+        std::cout << "hex file pos0: " << hexVal0;
+    }
+
+    if (hexLines > 1) {
+        uint16_t hexVal1 = b.getValueFromHexFile("test/data.hex", 1);
+        std::cout << ", pos1: " << hexVal1 << "\n";
+    }
 
     intc16_t** arr = new intc16_t*[10];
-
     for (int i = 0; i < 10; ++i){
         arr[i] = new intc16_t(i);
     }
 
     intc16_t obj;
     obj.a_delptr(arr, 10);
+    delete[] arr;
 
     std::cout << a.isOdd() << a.isEven() << "\n";
     std::cout << b.isOdd() << b.isEven() << "\n";
@@ -124,16 +137,14 @@ int main() {
 
     intc16_t f(200);
     intc16_t g(300);
-
     uint16_t h = 956;
 
     std::cout << a.equals(f) << "\n";
     std::cout << a.m_equals(f, g, '+') << "\n";
-    std::cout << a.hasBitPatttern(h) << "\n";
+    std::cout << a.hasBitPattern(h) << "\n";
 
-    a.pow(2, 5);
-
-    std::cout << a.val16 << "\n";
+    intc16_t result = a.pow(intc16_t(2), 5);
+    std::cout << result.val16 << "\n";
 
     std::cout << a.i_sqrt(10) << "\n";
 }
