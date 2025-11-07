@@ -139,6 +139,18 @@ Next we have i_sqrt(). Returns the square root of an integral type.
 
 Next we have f_sqrt(). Returns the square root of a floating point type.
 
+Next we have countUnsetBits(). Counts how much 0 is there in val16.
+
+Next we have isPowerOfTwo(). Checks if val16 is a power of 2.
+
+Next we have isPrime(). Checks if val16 is a prime number.
+
+Next we have n_powerOfTwo(). Takes the current val16 and finds the smallest power of two thats >= val16.
+
+Next we have m_highestBit(). Returns a mask where all bits up to the highest set bit in val16 are 1.
+
+Next we have swapBits(). Swaps 2 bits in val16.
+
 /---------------------------------------------------------------------------------------------------/
 
 These are the current functions  available, expect this file to be changed as more functions are added.
