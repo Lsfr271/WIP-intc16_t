@@ -12,7 +12,9 @@ iostream,
 cstdint,
 sstream,
 iomanip,
-fstream
+fstream,
+cmath,
+type_traits
 }
 */
 
@@ -107,6 +109,35 @@ Next we have getValueFromBinFile(): Reads the val16 stored in a binary file at t
 Next we have appToHexFile(): Appends the current val16 as a 4 digit uppercase hexadecimal number to a file.
 
 Next we have getValueFromHexFile(): Reads a val16 from a hex file at the given position. 
+
+Next we have equals(). It checks if a intc16_t val16 is equal to another val16.
+
+Next we have m_equals(). Same idea as equals() but compares if 2 objects of intc16_t.val16 is equal to anotehr objects val16 in four operations.
+(+, -, /, *).
+
+Next we have isOdd(). Checks if the current val16 is odd.
+
+Next we have isEven(). Checks if the current val16 is even.
+
+Next we have isPalindromeH(). Checks if the hex value of val16 is a palindrome.
+
+Next we have isPalindromeB(). Checks if the binary value of val16 is a palindrome.
+
+Next we have isBitPattern(). Checks if a pattern has a pattern in the bits.
+
+Next we have (intc16_t version) pow(). It Basically does exponentation but for intc16_t types.
+
+Next we have (global) pow(). It accepts any type and does exponentation on it.
+
+Next we have abs(). Gets the absolute value of something. (global value, accepts anything).
+
+Next we have gcd(). Returns the greatest common divider of anything.
+
+Next we have lcm(). Returns the lowest common multiple of anything.
+
+Next we have (integral) sqrt(). Returns the square root of an integral type.
+
+Next we have (floating point) sqrt(). Returns the square root of a floating point type.
 
 /---------------------------------------------------------------------------------------------------/
 
