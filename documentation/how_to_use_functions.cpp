@@ -103,7 +103,7 @@ int main() {
     b.appToHexFile("test/data.hex");
 
     uint16_t hexVal0 = a.getValueFromHexFile("test/data.hex", 0);
-    uint16_t hexVal1 = b.getValueFromHexFile("test/data.hex", 1);
+    uint16_t hexVal1 = b.getValueFromHexFile("test/data.hex", 0);
 
     std::cout << "hex file pos0: " << hexVal0 << ", pos1: " << hexVal1 << "\n";
 
@@ -115,4 +115,25 @@ int main() {
 
     intc16_t obj;
     obj.a_delptr(arr, 10);
+
+    std::cout << a.isOdd() << a.isEven() << "\n";
+    std::cout << b.isOdd() << b.isEven() << "\n";
+
+    std::cout << a.isPalindromeB() << a.isPalindromeH() << "\n";
+    std::cout << b.isPalindromeB() << b.isPalindromeH() << "\n";
+
+    intc16_t f(200);
+    intc16_t g(300);
+
+    uint16_t h = 956;
+
+    std::cout << a.equals(f) << "\n";
+    std::cout << a.m_equals(f, g, '+') << "\n";
+    std::cout << a.hasBitPatttern(h) << "\n";
+
+    a.pow(2, 5);
+
+    std::cout << a.val16 << "\n";
+
+    std::cout << a.i_sqrt(10) << "\n";
 }
