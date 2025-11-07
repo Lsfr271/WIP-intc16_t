@@ -42,7 +42,7 @@ struct intc16_t {
         bool isEven() const;
         bool isPalindromeH() const;
         bool isPalindromeB() const;
-        bool hasBitPatttern(uint16_t pattern) const;
+        bool hasBitPattern(uint16_t pattern) const;
 
         void showMemAddress();
         void setbit(int pos);
