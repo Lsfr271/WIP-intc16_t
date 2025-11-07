@@ -29,7 +29,7 @@ struct intc16_t {
         size_t position) const;
         uint16_t getValueFromBinFile(const std::string& filename, size_t pos) const;
         uint16_t getValueFromHexFile(const std::string& filename, size_t pos) const;
-
+        uint16_t m_highestBit() const;
 
         bool isZero() const;
         bool checkIfMax() const;
@@ -43,6 +43,8 @@ struct intc16_t {
         bool isPalindromeH() const;
         bool isPalindromeB() const;
         bool hasBitPattern(uint16_t pattern) const;
+        bool isPowerOfTwo() const;
+        bool isPrime() const;
 
         void showMemAddress();
         void setbit(int pos);
@@ -55,6 +57,7 @@ struct intc16_t {
         void appToHexFile(const std::string& filename) const;
         void delptr(intc16_t* other) const;
         void a_delptr(intc16_t* other[], size_t count) const;
+        void swapBits(int pos1, int pos2);
 
         size_t countRecords(const std::string& filename) const;
 
@@ -65,6 +68,7 @@ struct intc16_t {
         int lowestbit() const;
         int leadingZero() const;
         int trailingZero() const;
+        int countUnsetBits() const;
 
         std::string toBin();
         std::string toHex();
@@ -73,6 +77,7 @@ struct intc16_t {
         intc16_t rotateRight(int n) const;
         intc16_t reverseBits() const;
         intc16_t pow(intc16_t base, unsigned int exp);
+        intc16_t n_powerOfTwo() const;
 
         /* TEMPLATE FUNCTIONS */
         template<class A>
