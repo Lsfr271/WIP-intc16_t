@@ -443,7 +443,7 @@ bool intc16_t::isPalindromeB() const {
     return (bStr == rev);
 }
 
-bool intc16_t::hasBitPatttern(uint16_t pattern) const {
+bool intc16_t::hasBitPattern(uint16_t pattern) const {
     return ((val16 & pattern) == pattern);
 }
 
