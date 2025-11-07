@@ -447,3 +447,78 @@ bool intc16_t::hasBitPattern(uint16_t pattern) const {
     return ((val16 & pattern) == pattern);
 }
 
+int intc16_t::countUnsetBits() const {
+    int count = 0;
+
+    for (int i = 0; i < 16; ++i){
+        if ((val16 & (1 << i)) == 0){
+            ++count;
+        }
+    }
+
+    return count;
+}
+
+bool intc16_t::isPowerOfTwo() const {
+    return (val16 != 0) && ((val16 & (val16 - 1)) == 0);
+}
+
+bool intc16_t::isPrime() const {
+    if (val16 < 2){
+        return false;
+    }
+
+    for (uint16_t i = 2; i * i <= val16; ++i){
+        if (val16 % i == 0){
+            return false;
+        }
+    }
+
+    return true;
+}
+
+intc16_t intc16_t::n_powerOfTwo() const {
+    if (val16 == 0){
+        return intc16_t(1);
+    }
+
+    uint16_t n = val16;
+    --n;
+
+    n |= n >> 1;
+    n |= n >> 2;
+    n |= n >> 4;
+    n |= n >> 8;
+    ++n;
+
+    return intc16_t((n > 65535) ? 65535 : n);
+}
+
+uint16_t intc16_t::m_highestBit() const {
+    if (val16 == 0){
+        return 0;
+    }
+
+    uint16_t m = 1;
+    uint16_t n = val16;
+
+    while (n >>= 1){
+        m = (m << 1) | 2;
+    }
+
+    return m;
+}
+
+void intc16_t::swapBits(int pos1, int pos2){
+    if (pos1 < 0 || pos1 > 15 || pos2 < 0 || pos2 > 15){
+        throw std::invalid_argument("Position cannot be lower than 0 or higher"
+        " than 15.");
+    }
+
+    bool b1 = (val16 >> pos1) & 1;
+    bool b2 = (val16 >> pos2) & 1;
+
+    if (b1 != b2){
+        val16 ^= (1 << pos1) | (1 << pos2);
+    }
+}
