@@ -177,7 +177,7 @@ struct intc16_t {
         }
 
         template<class S, class = std::enable_if_t<std::is_integral<S>::value>>
-        S sqrt(S num){
+        S i_sqrt(S num){
             // signed neg
             if constexpr(std::is_signed<S>::value){
                 if (num < 0){
@@ -219,7 +219,7 @@ struct intc16_t {
         }
 
         template<class S, class = std::enable_if_t<std::is_floating_point<S>::value>>
-        S sqrt(S num){
+        S f_sqrt(S num){
             if (std::isnan(num)){
                 return std::numeric_limits<S>::quiet_NaN();
             }
