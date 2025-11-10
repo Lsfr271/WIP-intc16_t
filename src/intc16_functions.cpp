@@ -1,5 +1,7 @@
 #include "intc16.hpp"
 
+int intc16_t::countOfIntc16 = 0;
+
 void intc16_t::showMemAddress(){
     void* address = static_cast<void*>(&val16);
 
@@ -521,4 +523,8 @@ void intc16_t::swapBits(int pos1, int pos2){
     if (b1 != b2){
         val16 ^= (1 << pos1) | (1 << pos2);
     }
+}
+
+int intc16_t::getCount() {
+    return intc16_t::countOfIntc16;
 }
