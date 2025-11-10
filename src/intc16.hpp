@@ -18,11 +18,14 @@ struct intc16_t {
         MAXIMUM_SIZE16 must be private because it can be changed if its public.
         */
 
+        static int countOfIntc16; // count of each object of intc16_t.
+
     public:
         uint16_t val16 = 0; // public if it needs to be changed manually.
 
-        intc16_t(uint16_t u) : val16(u) {};
-        intc16_t() {};
+        intc16_t(uint16_t u) : val16(u) {countOfIntc16++;};
+        intc16_t() {countOfIntc16++;};
+        ~intc16_t() {countOfIntc16--;}
 
         uint16_t getValue() const;
         uint16_t getValueFromFile(const std::string& filename,
@@ -69,6 +72,7 @@ struct intc16_t {
         int leadingZero() const;
         int trailingZero() const;
         int countUnsetBits() const;
+        static int getCount();
 
         std::string toBin();
         std::string toHex();
@@ -236,6 +240,7 @@ struct intc16_t {
             if (num == 0){
                 return static_cast<S>(0);
             }
+
 
             double guess = static_cast<double>(num) / 2.0;
             double eps = 1e-9;
