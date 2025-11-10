@@ -6,10 +6,10 @@
       "type": "shell",
       "command": "g++",
       "args": [
-         "C:/YourPath/... <this must be the path to your main.cpp program that includes the intc16.hpp>", 
-         "C:/YourPath/... <this must be the path that includes intc16_functions.hpp>",
-         "-I", "C:/YourPath/... <this should be your MAIN directory for the compiler to find the headers>",
-         "-o", "C/YourPath/... <this should be the .exe that your main.cpp program that includes the intc16.hpp will be compiled in. (must create folder manually)>"
+         "${file}",
+         "<THIS MUST BE THE PATH THAT GOES TO intc16_functions.cpp>",
+         "-I", "<THIS MUST BE THE DIRECTORY THAT INCLUDES THE HEADER FILES (.cpp, .hpp(main), .hpp(operator overloads)",
+         "-o", "${fileDirname}/${fileBasenameNoExtension}.exe"
         ],
       "group": {
         "kind": "build",
