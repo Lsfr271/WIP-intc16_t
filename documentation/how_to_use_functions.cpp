@@ -160,4 +160,8 @@ int main() {
 
     std::cout << a.toBin() << "\n";
     std::cout << b.toBin() << "\n";
+
+    intc16_t ff(1004), fcc(2004), fcd(900), fcdf(10003);
+
+    std::cout << "Current Amount of objects: " << intc16_t::getCount() << "\n";
 }
