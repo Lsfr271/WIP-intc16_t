@@ -4,7 +4,7 @@ DOCUMENTATION OF ALL FUNCTIONS CURRENTLY IN intc16_t.hpp
 You can spread this software anywhere you like and you can modify it.
 */
 
-/* (Operator overloading wont be explained here) */
+/* (Operator overloading wont be explained here & inner structs) */
 
 /* includes:
 {
