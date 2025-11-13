@@ -164,4 +164,12 @@ int main() {
     intc16_t ff(1004), fcc(2004), fcd(900), fcdf(10003);
 
     std::cout << "Current Amount of objects: " << intc16_t::getCount() << "\n";
+
+    intc16_t::tpair<int, float, int> ffd(1, 2.0f, 3);
+    intc16_t::tpair<int, float, int> ccd(2, 3.0f, 8);
+
+    std::cout << "1=(" << ffd.first << " " << ffd.second << " " << ffd.third << ")" << "\n";
+    ffd.swap(ccd);
+
+    std::cout << "2=(" << ffd.first << " " << ffd.second << " " << ffd.third << ")" << "\n";
 }
