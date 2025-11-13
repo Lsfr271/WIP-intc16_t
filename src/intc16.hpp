@@ -255,6 +255,22 @@ struct intc16_t {
                 guess = new_guess;
             }
         }
+        
+        template<class T1, class T2, class T3>
+        struct tpair {
+            T1 first;
+            T2 second;
+            T3 third;
+
+            tpair() {}
+            tpair(T1 a, T2 b, T3 c) : first(a), second(b), third(c) {}
+
+            void swap(tpair& other){
+                std::swap(first, other.first);
+                std::swap(second, other.second);
+                std::swap(third, other.third);
+            }
+        };
 };
 
 #endif
